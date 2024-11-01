@@ -3,19 +3,26 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './components/Root/Root'
-import Books from './components/Books/Books'
 import Pages from './components/Pages/Pages'
 import SingIn from './components/SignIn/SingIn'
 import SignUp from './components/SignUp/SignUp'
+import Home from './components/Home/Home'
+import ListedBook from './components/ListedBook/ListedBook'
+import ErrorPage from './components/ErrorPage/ErrorPage'
 
 const router = createBrowserRouter([
   {
     path:'/',
     element:<Root/>,
+    errorElement:<ErrorPage/>,
     children:[
       {
-        path:'/books',
-        element:<Books/>
+        path:'/',
+        element:<Home/>
+      },
+      {
+        path:'/listed_books',
+        element:<ListedBook/>
       },
       {
         path:'/pages',
