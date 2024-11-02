@@ -8,7 +8,7 @@ const getListFromLS = () =>{
     }
 }
 
-const addDataToLS = (id) =>{
+const addListedDataToLS = (id) =>{
     const storedList = getListFromLS()
     if(storedList.includes(id)){
       alert('this data already exsist')
@@ -19,4 +19,25 @@ const addDataToLS = (id) =>{
     }
 }
 
-export {addDataToLS} 
+const getWishedListFromLS = () =>{
+    const storedWishedList = localStorage.getItem('wish-list')
+    if(storedWishedList){
+        const wishedList = JSON.parse(storedWishedList)
+        return wishedList;
+    }else{
+        return []
+    }
+}
+
+const addWishedListToLS = (id) =>{
+    const storedWishedList = getWishedListFromLS()
+    if(storedWishedList.includes(id)){
+        alert('data ready added')
+    }else{
+        storedWishedList.push(id)
+        const listStringfy = JSON.stringify(storedWishedList)
+        localStorage.setItem('wish-list', listStringfy)
+    }
+}
+
+export {addListedDataToLS, addWishedListToLS, getListFromLS, getWishedListFromLS} 

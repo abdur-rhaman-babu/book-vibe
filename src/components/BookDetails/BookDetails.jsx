@@ -1,12 +1,12 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { addDataToLS } from "../../utility";
+import { addListedDataToLS, addWishedListToLS } from "../../utility";
 
 const BookDetails = () => {
   const { bookId } = useParams();
   const id = parseInt(bookId);
   const books = useLoaderData();
   const book = books.find((book) => book.bookId === id);
-  console.log(book);
+  // console.log(book);
   const {
     image,
     tags,
@@ -21,10 +21,12 @@ const BookDetails = () => {
   } = book;
 
   const handleMarkAsRead = (id) =>{
-      console.log('handlemarkasread')
-      addDataToLS(id)
+      addListedDataToLS(id)
   }
 
+  const handleMarkAsWishList = (id) =>{
+        addWishedListToLS(id)  
+  } 
 
   return (
     <div className="flex items-center justify-center gap-10">
@@ -54,7 +56,7 @@ const BookDetails = () => {
             </div>
           <div className="space-x-5 my-5">
           <button onClick={()=>handleMarkAsRead(id)} className="py-3 px-5 border rounded-lg font-semibold">Read</button>
-          <button className="py-3 px-5 border rounded-lg bg-[#50B1C9] font-semibold text-white">Wishlist</button>
+          <button onClick={()=>handleMarkAsWishList(id)} className="py-3 px-5 border rounded-lg bg-[#50B1C9] font-semibold text-white">Wishlist</button>
           </div>
       </div>
     </div>
