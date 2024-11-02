@@ -1,9 +1,13 @@
+import { useLoaderData } from "react-router-dom";
+import PagesToread from "../PagesToRead/PagesToRead";
 const Pages = () => {
+    const books = useLoaderData()
+    
     return (
         <div>
-            <h1>Pages...</h1>
+            <PagesToread books = {books}/>
         </div>
-    );
+    ); 
 };
 
 export default Pages;
