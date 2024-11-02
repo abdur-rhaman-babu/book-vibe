@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const getListFromLS = () =>{
     const storedListStr = localStorage.getItem('list-item')
     if (storedListStr){
@@ -11,11 +13,12 @@ const getListFromLS = () =>{
 const addListedDataToLS = (id) =>{
     const storedList = getListFromLS()
     if(storedList.includes(id)){
-      alert('this data already exsist')
+        toast.error(' Already Added');
     }else{
         storedList.push(id)
         const listStringfy = JSON.stringify(storedList)
         localStorage.setItem('list-item',listStringfy)
+        toast.success("Added read listed");
     }
 }
 
@@ -32,11 +35,12 @@ const getWishedListFromLS = () =>{
 const addWishedListToLS = (id) =>{
     const storedWishedList = getWishedListFromLS()
     if(storedWishedList.includes(id)){
-        alert('data ready added')
+        toast.error("Already Added");
     }else{
         storedWishedList.push(id)
         const listStringfy = JSON.stringify(storedWishedList)
         localStorage.setItem('wish-list', listStringfy)
+        toast.success("Added wishes list");
     }
 }
 
