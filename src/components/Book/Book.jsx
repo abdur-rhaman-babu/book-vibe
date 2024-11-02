@@ -3,8 +3,8 @@ import { RiStarLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
-//   console.log(book);
-  const { bookId, image, bookName, author, rating, tags, category } = book;
+  console.log(book);
+  const { bookId, image, bookName, author, rating, tags, category, totalPages} = book;
   return (
     <Link to={`/book/${bookId}`}>
       <div className="border p-6 rounded-2xl text-left flex flex-col">
@@ -22,9 +22,14 @@ const Book = ({ book }) => {
           ))}
         </div>
         <h3 className="font-play text-2xl font-bold my-3">{bookName}</h3>
+        <div className="flex justify-between items-center">
         <p className="font-medium text-[#131313] opacity-80 text-xl mb-3 flex-grow">
           By: {author}
         </p>
+        <p className="font-medium text-[#131313] opacity-80 text-xl mb-3 flex-grow">
+          Pages: {totalPages}
+        </p>
+        </div>
         <div className="flex items-center justify-between border-t-2 border-dashed">
           <p className="font-medium text-[#131313] opacity-80 text-xl mb-3">
             {category}
